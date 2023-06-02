@@ -1,0 +1,13 @@
+:root {
+    --first-color: #EEE3CB;
+    --second-color: #967E76;
+    --third-color: #9BABB8;
+    --fourth-color: #D7C0AE;
+    --fifth-color: #DDD0C8;
+}
+/* .mybg {
+    background-color: var(--fifth-color);
+} */
+/* .mybg{
+    background-color: var(--second-color);
+} */
