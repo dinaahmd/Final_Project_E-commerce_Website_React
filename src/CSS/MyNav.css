@@ -1,4 +1,4 @@
-.Brand {
-    font-size: 50px;
-    font-weight: bold;
+.navbar,
+.navbar-default {
+        background-color: rgba(58, 152, 185, 0.7) !important;
 }

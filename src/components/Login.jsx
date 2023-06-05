@@ -56,15 +56,15 @@ export default function Login(props) {
     }
 
     return (
-        <Container fluid>
+        <Container fluid className='paddingLogin'>
             <Row>
                 <Col md-6 className="d-flex align-items-center justify-content-center">
-                    <Image src="https://images.pexels.com/photos/2043590/pexels-photo-2043590.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" className='rounded object-cover m-3' style={{ height: '650px' }} fluid />
+                    <Image src="bgLogin.jpeg" className='rounded object-cover m-3' style={{ height: '650px' }} fluid />
                 </Col>
                 <Col md-6 className="d-flex align-items-center justify-content-center">
 
                     <Form className='container text-center w-50' onSubmit={handelLogin}>
-                        <h1 className='mb-5'>Login Form</h1>
+                        <h1 className='mb-5 loginTitle'>Login Form</h1>
                         
                         <p className='text-danger'>
                             {err}
@@ -72,7 +72,6 @@ export default function Login(props) {
                         
                         <Form.Group controlId="formBasicEmail">
                             <Form.Control className='inputs mt-5 mb-4' type="email" name="email" placeholder="Email address " required onChange={operationHandler} />
-                 
                         </Form.Group>
 
                         <Form.Group controlId="formBasicPassword">

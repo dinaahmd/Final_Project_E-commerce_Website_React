@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
+import '../CSS/productForm.css'
 
 export function ProductForm() {
     let { id } = useParams();
@@ -10,26 +11,35 @@ export function ProductForm() {
     let [product, setProduct] = useState({});
     let [formValues, setFormValues] = useState({
         productName: "",
+        image:"",
         price: "",
-        quantity: "",
+        pquantity: "",
     });
-
     let formOperation = (e) => {
         e.preventDefault();
-
+        const { productName, image, price, pquantity } = formValues;
         if (id == 0) {
-            axios
-                .post("http://localhost:3005/products", formValues)
-                .then((response) => {
-                    navigate("/products");
-                });
-        } else {
-            // edit
-            axios.put(`http://localhost:3005/products/${id}`, formValues).then(() => {
+            axios.post("http://localhost:3005/products", {
+                productName,
+                image,
+                price: parseInt(price),
+                pquantity: parseInt(pquantity),
+            })
+            .then(() => {
                 navigate("/products");
             });
-        }
-    };
+            } else {
+            axios.put(`http://localhost:3005/products/${id}`, {
+                productName,
+                image,
+                price: parseInt(price),
+                pquantity: parseInt(pquantity),
+            })
+            .then(() => {
+                navigate("/products");
+            });
+            }
+        };
 
     let OperationHandler = (e) => {
         setFormValues({
@@ -49,10 +59,11 @@ export function ProductForm() {
         }
     }, []);
     return (
-        <div className='container mt-5 alert alert-secondary p-5'>
+        <div className="pt-5 pb-5 bg-store">
+        <div style={{width:"500px"}} className='container mt-5 bg-form p-5'>
             <Form onSubmit={formOperation}>
                 <Form.Group className='mb-3' controlId='formBasicEmail'>
-                    <Form.Label>Product Name</Form.Label>
+                    <Form.Label style={{color:"#3A98B9" , fontWeight:"bold"}}>Product Name</Form.Label>
                     <Form.Control
                         onChange={OperationHandler}
                         name='productName'
@@ -61,9 +72,18 @@ export function ProductForm() {
                         defaultValue={product.productName}
                     />
                 </Form.Group>
-
+                <Form.Group className='mb-3' controlId='formBasicImage'>
+                    <Form.Label style={{color:"#3A98B9" , fontWeight:"bold"}}>Product Image</Form.Label>
+                    <Form.Control
+                        onChange={OperationHandler}
+                        name='image'
+                        type='text'
+                        placeholder='Enter Product Image URL'
+                        defaultValue={product.image}
+                    />
+                </Form.Group>
                 <Form.Group className='mb-3' controlId='formBasicPassword'>
-                    <Form.Label>Price</Form.Label>
+                    <Form.Label style={{color:"#3A98B9" , fontWeight:"bold"}}>Price</Form.Label>
                     <Form.Control
                         onChange={OperationHandler}
                         name='price'
@@ -73,20 +93,21 @@ export function ProductForm() {
                     />
                 </Form.Group>
                 <Form.Group className='mb-3' controlId='quantity'>
-                    <Form.Label>Quantity</Form.Label>
+                    <Form.Label style={{color:"#3A98B9" , fontWeight:"bold"}}>Quantity</Form.Label>
                     <Form.Control
                         onChange={OperationHandler}
-                        name='quantity'
+                        name='pquantity'
                         type='number'
                         placeholder='Enter Product Quantity'
-                        defaultValue={product.quantity}
+                        defaultValue={product.pquantity}
                     />
                 </Form.Group>
 
-                <Button variant='dark' type='submit'>
+                <button className="myBtn" type='submit'>
                     {id == 0 ? "Add Product" : "Edit Product"}
-                </Button>
+                </button>
             </Form>
+        </div>
         </div>
     );
 }
