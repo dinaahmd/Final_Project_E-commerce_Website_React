@@ -79,7 +79,7 @@ export default function Register() {
     return (
         <div className='register-body' fluid>
             <Form className='form-container container w-25 p-3' onSubmit={formHandler} >
-                <h1 className='text-center fs-3'>Register Form</h1>
+                <h1 className='text-center fs-3 regTitle'>Register Form</h1>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Control type="text" name='username' placeholder="Username" autoComplete='off' onChange={operationHandler} />
                     <Form.Text className="text-danger">
@@ -109,12 +109,8 @@ export default function Register() {
                         {formErrors.client_admin}
                     </Form.Text>
                 </Form.Group>
-
-
-
-
                 <div className='text-center '>
-                    <Button className='w-25' variant="dark" type="submit">
+                    <Button className='w-25 my-button' variant="dark" type="submit">
                         Register
                     </Button>
                 </div>

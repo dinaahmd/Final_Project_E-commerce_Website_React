@@ -3,16 +3,18 @@ import './App.css';
 import { MyNav } from './components/MyNav';
 import { Route, Routes } from 'react-router-dom';
 import { Home } from './components/Home';
+import { About } from './components/About';
 import { Products } from './components/Products';
-import { ProductDetails } from './components/ProductDetails';
 import { ProductForm } from './components/ProductForm';
 import { NotFound } from './components/NotFound';
 import Login from './components/Login';
 import Register from './components/Register';
-import { createContext, useState } from 'react';
+import { useState } from 'react';
 import Admin_products from './components/Admin_products';
+import Store from './components/Store';
+import ShoppingCartProvider from "./context/ShoppingCartContext";
+import { Footer } from './components/Footer';
 
-// export let usernameContext = createContext();
 
 function App() {
   let [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -25,36 +27,32 @@ function App() {
   }
 
   return (
-    
     <div>
-      {/* <usernameContext.Provider value={Username}> */}
-      {
+      <ShoppingCartProvider>
+        {
         isLoggedIn ?  <MyNav changable={Username} /> : <MyNav changable={"Login"} />
       }
-      {/* </usernameContext.Provider> */}
-      
-      {/* {
-        userCategory === "client" ? 
-      } */}
-      
-      
-      <Routes>
-        <Route path='' element={<Home />} />
-        <Route path='home' element={<Home />} />
-        <Route path='login' element={<Login onLogin={handelLogin} />} />
-        <Route path='register' element={<Register />} />
-        {
+        <Routes>
+          <Route path='' element={<Home />} />
+          <Route path='home' element={<Home />} />
+          <Route path='about' element={<About />} />
+          {/* <Route path='products' element={<Products />} />
+          <Route path='store' element={<Store />} /> */}
+          <Route path='products/:id/edit' element={<ProductForm />} />
+          <Route path='login' element={<Login onLogin={handelLogin} />} />
+          <Route path='register' element={<Register />} />
+          {
           isLoggedIn && userCategory === "administrator" ? 
-            <Route path='products' element={<Admin_products />} />
-            : isLoggedIn && userCategory === "client" ?             
-              <Route path='products' element={<Products />} /> 
-              : <Route path='products' element={<Login onLogin={handelLogin} />} />
-
-        }
-        <Route path='products/:id' element={<ProductDetails />} />
-        <Route path='products/:id/edit' element={<ProductForm />} />
-        <Route path='*' element={<NotFound />} />
-      </Routes>
+          <Route path='store' element={<Products />} />
+          : isLoggedIn && userCategory === "client" ?             
+            <Route path='store' element={<Store />} /> 
+            : <Route path='store' element={<Login onLogin={handelLogin} />} />
+          }
+        {/* <Route path='products/:id' element={<ProductDetails />} /> */}
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+        <Footer/>
+      </ShoppingCartProvider>
     </div>
   );
 }

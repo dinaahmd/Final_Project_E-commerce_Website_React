@@ -1,17 +1,17 @@
 :root {
-    --first-color: #EEE3CB;
-    --second-color: #967E76;
-    --third-color: #9BABB8;
-    --fourth-color: #D7C0AE;
+    --first-color: #3A98B9;
+    --second-color: #FFF1DC;
+    --third-color: #E8D5C4;
+    --fourth-color: #EEEEEE;
 }
 body{
-    background-color: var(--first-color) !important;
+    background-color: var(--second-color) !important;
 }
-h1{
-    color: var(--second-color) !important;
+.loginTitle{
+    color: var(--first-color) !important;
 }
 .my-button {
-    background-color: white !important;
+    background-color: var(--first-color) !important;
     color: var(--second-color) !important;
     border: none !important;
     font-weight: bold !important;
@@ -19,11 +19,13 @@ h1{
 
 .my-button:hover {
         background-color: var(--second-color) !important;
-        color: white !important;
+        color: var(--first-color) !important;
+        border: 2px solid #3A98B9 !important;
+        font-weight: bold !important;
 
 }
-.inputs:focus,.inputs:active {
-   outline: none !important;
-   box-shadow: none !important;
 
+.paddingLogin{
+    padding-top: 100px !important;
+    padding-bottom: 50px !important;
 }

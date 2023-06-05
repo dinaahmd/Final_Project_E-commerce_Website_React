@@ -1,19 +1,42 @@
 import React from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-
+import { useShoppingCart } from "../context/ShoppingCartContext";
+import '../CSS/MyNav.css'
 export function MyNav(props) {
+    const { openCart, cartQuantity } = useShoppingCart();
     return (
         <div>
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar fixed="top" collapseOnSelect expand="lg" variant="dark">
                 <Container>
-                    <Navbar.Brand className="Brand" href="#home">Furnitchy</Navbar.Brand>
+                <Navbar.Brand style={{ color: '#EEEEEE' }} className="Brand fs-4 fw-bold" href="#home">Clothing Gold</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav id="left-nav">
-                            <NavLink className="nav-link" to="/">Home</NavLink>
-                            <NavLink className="nav-link" to="/about">About</NavLink>
-                            <NavLink className="nav-link" to="/products">Products</NavLink>
+                        <Nav className="ms-auto" id="left-nav">
+                            <NavLink style={{ color: '#EEEEEE' }}  className="nav-link" to="/">Home</NavLink>
+                            <NavLink style={{ color: '#EEEEEE' }} className="nav-link" to="/about">About</NavLink>
+                            {/* <NavLink style={{ color: '#EEEEEE' }} className="nav-link" to="/products">Admin</NavLink> */}
+                            <NavLink style={{ color: '#EEEEEE' }} className="nav-link" to="/store">Products</NavLink>
+                            <NavLink style={{ color: '#EEEEEE' }} className="nav-link" to="/store" >
+                                <button onClick={openCart} style={{border:"0px" , backgroundColor:"transparent" , position: "relative" }}>
+                                <i className='fs-5 text-light m-1 bi bi-cart3'></i>
+                                <div
+                                    className="rounded-circle bg-danger d-flex justify-content-center align-item-center"
+                                    style={{
+                                        color: "white",
+                                        width: "1.5rem",
+                                        height: "1.5rem",
+                                        position: "absolute",
+                                        bottom: 0,
+                                        right: 0,
+                                        transform: "translate(25%, 25%)",
+                                    }}
+                                    >
+                                    {cartQuantity}
+                                </div>
+                                </button>
+                                
+                            </NavLink>
                         </Nav>
                         {props.changable === "Login" ? (
                             <Nav className="ms-auto text-light">
@@ -24,7 +47,6 @@ export function MyNav(props) {
                                     <span> {props.changable}</span>
                                 </Nav>
                         )}
-
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
