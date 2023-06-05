@@ -1,0 +1,29 @@
+:root {
+    --first-color: #EEE3CB;
+    --second-color: #967E76;
+    --third-color: #9BABB8;
+    --fourth-color: #D7C0AE;
+}
+body{
+    background-color: var(--first-color) !important;
+}
+h1{
+    color: var(--second-color) !important;
+}
+.my-button {
+    background-color: white !important;
+    color: var(--second-color) !important;
+    border: none !important;
+    font-weight: bold !important;
+}
+
+.my-button:hover {
+        background-color: var(--second-color) !important;
+        color: white !important;
+
+}
+.inputs:focus,.inputs:active {
+   outline: none !important;
+   box-shadow: none !important;
+
+}
