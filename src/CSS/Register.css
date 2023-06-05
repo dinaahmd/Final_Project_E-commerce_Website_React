@@ -1,0 +1,21 @@
+:root {
+    --first-color: #EEE3CB;
+    --second-color: #967E76;
+    --third-color: #9BABB8;
+    --fourth-color: #D7C0AE;
+}
+.register-body {
+    background-image: url('https://images.pexels.com/photos/5632371/pexels-photo-5632371.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    height: 92vh !important;
+
+}
+
+.form-container {
+    position: absolute !important;
+    top: 200px !important;
+    left: 570px !important;
+    background-color:rgba(255, 255, 255, 0.43) !important;
+}
+
