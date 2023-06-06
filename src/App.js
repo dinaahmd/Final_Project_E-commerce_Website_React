@@ -10,7 +10,6 @@ import { NotFound } from './components/NotFound';
 import Login from './components/Login';
 import Register from './components/Register';
 import { useState } from 'react';
-import Admin_products from './components/Admin_products';
 import Store from './components/Store';
 import ShoppingCartProvider from "./context/ShoppingCartContext";
 import { Footer } from './components/Footer';
@@ -30,14 +29,12 @@ function App() {
     <div>
       <ShoppingCartProvider>
         {
-        isLoggedIn ?  <MyNav changable={Username} /> : <MyNav changable={"Login"} />
+        isLoggedIn ?  <MyNav changable={`Welcome, ${Username}`} /> : <MyNav changable={"Login"} />
       }
         <Routes>
           <Route path='' element={<Home />} />
           <Route path='home' element={<Home />} />
           <Route path='about' element={<About />} />
-          {/* <Route path='products' element={<Products />} />
-          <Route path='store' element={<Store />} /> */}
           <Route path='products/:id/edit' element={<ProductForm />} />
           <Route path='login' element={<Login onLogin={handelLogin} />} />
           <Route path='register' element={<Register />} />
@@ -48,7 +45,6 @@ function App() {
             <Route path='store' element={<Store />} /> 
             : <Route path='store' element={<Login onLogin={handelLogin} />} />
           }
-        {/* <Route path='products/:id' element={<ProductDetails />} /> */}
           <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer/>

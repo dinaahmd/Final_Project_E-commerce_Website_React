@@ -45,7 +45,7 @@ const StoreItem = ({ id }) => {
             increaseCartQuantity(id);
         }
     };
-    
+
 return (
     <Container className="mx-5 mb-5 bg-store">
         <Card style={{ width: '19rem' }}>

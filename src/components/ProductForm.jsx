@@ -26,7 +26,7 @@ export function ProductForm() {
                 pquantity: parseInt(pquantity),
             })
             .then(() => {
-                navigate("/products");
+                navigate("/store");
             });
             } else {
             axios.put(`http://localhost:3005/products/${id}`, {
@@ -36,7 +36,7 @@ export function ProductForm() {
                 pquantity: parseInt(pquantity),
             })
             .then(() => {
-                navigate("/products");
+                navigate("/store");
             });
             }
         };

@@ -3,7 +3,7 @@ import React from 'react'
 export function NotFound() {
     return (
         <div>
-            <a href="https://www.enationalelectronics.com" target="_blank">
+
                 <div classNameName="container">
                     <div className="row">
                         <div className="col-sm-12 col-md-12 mt-5 mb-5">
@@ -322,7 +322,6 @@ export function NotFound() {
                         </div>
                     </div>
                 </div>
-            </a>
         </div>
     )
 }

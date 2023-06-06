@@ -15,7 +15,6 @@ export function MyNav(props) {
                         <Nav className="ms-auto" id="left-nav">
                             <NavLink style={{ color: '#EEEEEE' }}  className="nav-link" to="/">Home</NavLink>
                             <NavLink style={{ color: '#EEEEEE' }} className="nav-link" to="/about">About</NavLink>
-                            {/* <NavLink style={{ color: '#EEEEEE' }} className="nav-link" to="/products">Admin</NavLink> */}
                             <NavLink style={{ color: '#EEEEEE' }} className="nav-link" to="/store">Products</NavLink>
                             <NavLink style={{ color: '#EEEEEE' }} className="nav-link" to="/store" >
                                 <button onClick={openCart} style={{border:"0px" , backgroundColor:"transparent" , position: "relative" }}>
@@ -44,7 +43,9 @@ export function MyNav(props) {
                             </Nav>
                         ) : (
                                 <Nav className="ms-auto text-light">
-                                    <span> {props.changable}</span>
+                                    <span className="mt-2" > {props.changable}</span>
+                                    <NavLink className="nav-link" style={{marginLeft:"10px"}} to="/home">Log Out</NavLink>
+
                                 </Nav>
                         )}
                     </Navbar.Collapse>
