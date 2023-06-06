@@ -19,17 +19,28 @@ function App() {
   let [isLoggedIn, setIsLoggedIn] = useState(false);
   let [Username, setUsername] = useState("");
   let [userCategory, setUserCategory] = useState("");
-  let handelLogin = (user) => {
-    setIsLoggedIn(true);
+  let handelLogin = (user, LoggedIn) => {
+    setIsLoggedIn(LoggedIn);
     setUsername(user.username);
     setUserCategory(user.client_admin)
   }
+  let handelLogout = (LoggedIn) => {
+    localStorage.removeItem("shopping-cart")
+    window.location.reload();
+    setIsLoggedIn(LoggedIn);
+  }
+  let logInOut = {
+    data: " ",
+    handler: handelLogout
+  }
+  isLoggedIn ? logInOut.data = `Welcome, ${Username}` : logInOut.data = "Login";
+
 
   return (
     <div>
       <ShoppingCartProvider>
-        {
-        isLoggedIn ?  <MyNav changable={`Welcome, ${Username}`} /> : <MyNav changable={"Login"} />
+      {
+        isLoggedIn ?  <MyNav changable={logInOut} /> : <MyNav changable={logInOut} />
       }
         <Routes>
           <Route path='' element={<Home />} />
@@ -45,6 +56,7 @@ function App() {
             <Route path='store' element={<Store />} /> 
             : <Route path='store' element={<Login onLogin={handelLogin} />} />
           }
+          <Route path='logout' element={<Home />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer/>

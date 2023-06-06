@@ -37,13 +37,10 @@ export default function Login(props) {
             
 
             setErr('')
-            props.onLogin(user);
+            props.onLogin(user, true);
             navigate('/home');
 
-            
-            // else {
-            //     setErr("There was a problem logging in. Check your email and password or create an account.")
-            // }
+
         } catch (error) {
             console.error(error);
             setErr("There was a problem logging in. Check your email and password or create an account.")
@@ -85,7 +82,6 @@ export default function Login(props) {
                             <option value="administrator">Administrator</option>
                         </Form.Select>
                             
-      
                         <Button className='w-100 inputs my-button ' variant='' type="submit">
                             LOGIN
                         </Button>

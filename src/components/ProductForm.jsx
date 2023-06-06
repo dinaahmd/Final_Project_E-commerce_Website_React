@@ -11,7 +11,7 @@ export function ProductForm() {
     let [product, setProduct] = useState({});
     let [formValues, setFormValues] = useState({
         productName: "",
-        image:"",
+        image: "",
         price: "",
         pquantity: "",
     });
@@ -41,6 +41,8 @@ export function ProductForm() {
             }
         };
 
+
+
     let OperationHandler = (e) => {
         setFormValues({
             ...formValues,
@@ -60,54 +62,54 @@ export function ProductForm() {
     }, []);
     return (
         <div className="pt-5 pb-5 bg-store">
-        <div style={{width:"500px"}} className='container mt-5 bg-form p-5'>
-            <Form onSubmit={formOperation}>
-                <Form.Group className='mb-3' controlId='formBasicEmail'>
-                    <Form.Label style={{color:"#3A98B9" , fontWeight:"bold"}}>Product Name</Form.Label>
-                    <Form.Control
-                        onChange={OperationHandler}
-                        name='productName'
-                        type='text'
-                        placeholder='Enter Product Name'
-                        defaultValue={product.productName}
-                    />
-                </Form.Group>
-                <Form.Group className='mb-3' controlId='formBasicImage'>
-                    <Form.Label style={{color:"#3A98B9" , fontWeight:"bold"}}>Product Image</Form.Label>
-                    <Form.Control
-                        onChange={OperationHandler}
-                        name='image'
-                        type='text'
-                        placeholder='Enter Product Image URL'
-                        defaultValue={product.image}
-                    />
-                </Form.Group>
-                <Form.Group className='mb-3' controlId='formBasicPassword'>
-                    <Form.Label style={{color:"#3A98B9" , fontWeight:"bold"}}>Price</Form.Label>
-                    <Form.Control
-                        onChange={OperationHandler}
-                        name='price'
-                        type='number'
-                        placeholder='Enter Product Price'
-                        defaultValue={product.price}
-                    />
-                </Form.Group>
-                <Form.Group className='mb-3' controlId='quantity'>
-                    <Form.Label style={{color:"#3A98B9" , fontWeight:"bold"}}>Quantity</Form.Label>
-                    <Form.Control
-                        onChange={OperationHandler}
-                        name='pquantity'
-                        type='number'
-                        placeholder='Enter Product Quantity'
-                        defaultValue={product.pquantity}
-                    />
-                </Form.Group>
+            <div style={{ width: "500px" }} className='container mt-5 bg-form p-5'>
+                <Form onSubmit={formOperation}>
+                    <Form.Group className='mb-3' controlId='formBasicEmail'>
+                        <Form.Label style={{ color: "#3A98B9", fontWeight: "bold" }}>Product Name</Form.Label>
+                        <Form.Control
+                            onChange={OperationHandler}
+                            name='productName'
+                            type='text'
+                            placeholder='Enter Product Name'
+                            defaultValue={product.productName}
+                        />
+                    </Form.Group>
+                    <Form.Group className='mb-3' controlId='formBasicImage'>
+                        <Form.Label style={{ color: "#3A98B9", fontWeight: "bold" }}>Product Image</Form.Label>
+                        <Form.Control
+                            onChange={OperationHandler}
+                            name='image'
+                            type='text'
+                            placeholder='Enter Product Image URL'
+                            defaultValue={product.image}
+                        />
+                    </Form.Group>
+                    <Form.Group className='mb-3' controlId='formBasicPassword'>
+                        <Form.Label style={{ color: "#3A98B9", fontWeight: "bold" }}>Price</Form.Label>
+                        <Form.Control
+                            onChange={OperationHandler}
+                            name='price'
+                            type='number'
+                            placeholder='Enter Product Price'
+                            defaultValue={product.price}
+                        />
+                    </Form.Group>
+                    <Form.Group className='mb-3' controlId='quantity'>
+                        <Form.Label style={{ color: "#3A98B9", fontWeight: "bold" }}>Quantity</Form.Label>
+                        <Form.Control
+                            onChange={OperationHandler}
+                            name='pquantity'
+                            type='number'
+                            placeholder='Enter Product Quantity'
+                            defaultValue={product.pquantity}
+                        />
+                    </Form.Group>
 
-                <button className="myBtn" type='submit'>
-                    {id == 0 ? "Add Product" : "Edit Product"}
-                </button>
-            </Form>
-        </div>
+                    <button className="myBtn" type='submit'>
+                        {id == 0 ? "Add Product" : "Edit Product"}
+                    </button>
+                </Form>
+            </div>
         </div>
     );
 }

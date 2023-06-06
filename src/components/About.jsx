@@ -68,7 +68,7 @@ export function About() {
                       <Card.Body className='cards'>
                           <Card.Title>Creative Designs</Card.Title>
                           <Card.Text>
-                              We strive and do our best to make the design and style of our clothes unique and suitable for all cultures and all ages.
+                            We strive and do our best to make the design and style of our clothes unique and suitable for all cultures and all ages.
                           </Card.Text>
                       </Card.Body>
                       <Card.Footer>
