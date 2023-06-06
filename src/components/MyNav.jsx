@@ -1,10 +1,16 @@
 import React from "react";
 import { Container, Nav, Navbar, Button } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import '../CSS/MyNav.css'
 export function MyNav(props) {
+    let navigate = useNavigate()
     const { openCart, cartQuantity } = useShoppingCart();
+    let handelLogout = () => {
+        navigate('/home');
+        props.changable.handler(false);
+        // islogged(false);
+    }
     return (
         <div>
             <Navbar fixed="top" collapseOnSelect expand="lg" variant="dark">
@@ -38,13 +44,17 @@ export function MyNav(props) {
                                 
                             </NavLink>
                         </Nav>
-                        {props.changable === "Login" ? (
+    
+                        {props.changable.data === "Login" ? (
                             <Nav className="ms-auto text-light">
-                                <NavLink className="nav-link" to="/login">{props.changable}</NavLink>
+                                <NavLink className="nav-link" to="/login">{props.changable.data}</NavLink>
                             </Nav>
                         ) : (
                                 <Nav className="ms-auto text-light">
-                                    <span> {props.changable}</span>
+                                    <span className="" > {props.changable.data}</span>
+                                    <button style={{ background: 'none', border: 'none', color: 'white', marginLeft: "10px" }} onClick={handelLogout}>Log Out</button>
+                                    {/* <NavLink className="nav-link" style={{marginLeft:"10px"}} to="/logout">Log Out</NavLink> */}
+
                                 </Nav>
                         )}
                     </Navbar.Collapse>

@@ -10,7 +10,6 @@ import { NotFound } from './components/NotFound';
 import Login from './components/Login';
 import Register from './components/Register';
 import { useState } from 'react';
-import Admin_products from './components/Admin_products';
 import Store from './components/Store';
 import ShoppingCartProvider from "./context/ShoppingCartContext";
 import { Footer } from './components/Footer';
@@ -20,24 +19,31 @@ function App() {
   let [isLoggedIn, setIsLoggedIn] = useState(false);
   let [Username, setUsername] = useState("");
   let [userCategory, setUserCategory] = useState("");
-  let handelLogin = (user) => {
-    setIsLoggedIn(true);
+  let handelLogin = (user, LoggedIn) => {
+    setIsLoggedIn(LoggedIn);
     setUsername(user.username);
     setUserCategory(user.client_admin)
   }
+   let handelLogout = (LoggedIn) => {
+    setIsLoggedIn(LoggedIn);
+  }
+  let logInOut = {
+    data: " ",
+    handler: handelLogout
+  }
+  isLoggedIn ? logInOut.data = `Welcome, ${Username}` : logInOut.data = "Login";
+
 
   return (
     <div>
       <ShoppingCartProvider>
-        {
-        isLoggedIn ?  <MyNav changable={Username} /> : <MyNav changable={"Login"} />
+      {
+        isLoggedIn ?  <MyNav changable={logInOut} /> : <MyNav changable={logInOut} />
       }
         <Routes>
           <Route path='' element={<Home />} />
           <Route path='home' element={<Home />} />
           <Route path='about' element={<About />} />
-          {/* <Route path='products' element={<Products />} />
-          <Route path='store' element={<Store />} /> */}
           <Route path='products/:id/edit' element={<ProductForm />} />
           <Route path='login' element={<Login onLogin={handelLogin} />} />
           <Route path='register' element={<Register />} />
@@ -48,7 +54,7 @@ function App() {
             <Route path='store' element={<Store />} /> 
             : <Route path='store' element={<Login onLogin={handelLogin} />} />
           }
-        {/* <Route path='products/:id' element={<ProductDetails />} /> */}
+          <Route path='logout' element={<Home />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer/>

@@ -37,7 +37,7 @@ export default function Login(props) {
             
 
             setErr('')
-            props.onLogin(user);
+            props.onLogin(user, true);
             navigate('/home');
 
             
